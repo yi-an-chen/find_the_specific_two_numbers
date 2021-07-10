@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>數字：</p>
+    <p id="showArray"></p>
+    <input type="number" id="target" placeholder="請輸入目標數字">
+    <button id="button">確定</button>
+    <hr>
+    <p>結果：是哪2個數字相加呢？</p>
+    <p id="showTargetArray"></p>
+
+    <script>
+        let array = [1, 4, 7, 9, 15, 21]
+        const showArray = document.getElementById('showArray')
+        const target = document.getElementById('target')
+        const button = document.getElementById('button')
+        const showTargetArray = document.getElementById('showTargetArray')
+
+        showArray.textContent = array
+        button.addEventListener('click', function (e) {
+            let targetNum = parseInt(target.value)
+
+            let targetArray = []
+            for (i = 0; i < array.length; i++) {
+                const x = targetNum - array[i]
+                if (array.indexOf(x) >= 0) {
+                    targetArray.push(array[i])
+                }
+            }
+
+            if (targetArray.length >= 2) {
+                showTargetArray.textContent = targetArray
+            } else {
+                showTargetArray.textContent = "找不到可相加的2個數字！"
+            }
+
+        })
+
+    </script>
+</body>
+
+</html>
