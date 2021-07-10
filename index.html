@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <p>試卷ID：vyDa7UoePT9SmojY</p> -->
+
+    <!-- <p>1. Design a stack class that supports push, pop, top, and retrieving the maximum element.</p> -->
+    <div>
+        <p>最初 Stack：</p>
+        <p id="originalStack"></p>
+    </div>
+
+    <input type="number" placeholder="請輸入數字 (整數)" id="num">
+    <button id="send">確定</button>
+    <br>
+    <br>
+    <button id="getFirst">取得「第一個」數字</button>
+    <span id="showFirst"></span>
+    <br>
+    <br>
+    <button id="getMax">取得「最大」的數字</button>
+    <span id="showMax"></span>
+    <br>
+    <br>
+    <button id="removeFirst">移除「第一個」數字</button>
+    <button id="removeLast">移除「最後一個」數字</button>
+
+    <div>
+        <p>新的 Stack：</p>
+        <p id="newStack"></p>
+    </div>
+
+    <script>
+        let stack = [5, 7, 1, 18, 27, 99, 74, 25, 31, 64, 88, 72, 16, 24, 3, 57]
+        const originalStack = document.querySelector('#originalStack')
+        const num = document.querySelector('#num')
+        const send = document.querySelector('#send')
+        const getFirst = document.querySelector('#getFirst')
+        const showFirst = document.querySelector('#showFirst')
+        const getMax = document.querySelector('#getMax')
+        const showMax = document.querySelector('#showMax')
+        const removeFirst = document.querySelector('#removeFirst')
+        const removeLast = document.querySelector("#removeLast")
+        const newStack = document.querySelector('#newStack')
+
+        originalStack.textContent = stack
+
+        send.addEventListener('click', function (e) {
+            let x = num.value
+            let xNum = parseInt(x)
+            stack.push(xNum)
+            newStack.textContent = stack
+        })
+
+        getFirst.addEventListener('click', function (e) {
+            showFirst.textContent = stack[0]
+        })
+
+        getMax.addEventListener('click', function (e) {
+            Array.prototype.max = function () {
+                var max = this[0];
+                for (var i = 1; i < this.length; i++) {
+                    if (this[i] > max) {
+                        max = this[i];
+                    }
+                }
+                console.log(max);
+                showMax.textContent=max
+            }
+            stack.max()
+        })
+
+        removeFirst.addEventListener('click', function (e) {
+            stack.shift()
+            console.log(stack);
+            newStack.textContent = stack
+        })
+
+        removeLast.addEventListener('click', function (e) {
+            stack.pop()
+            console.log(stack);
+            newStack.textContent = stack
+        })
+
+    </script>
+</body>
+
+</html>
